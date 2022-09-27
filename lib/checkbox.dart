@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,19 +9,23 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // bool erased = false;
   List availableHobbies = [
-    {"id" : 1,"name": "Cricket", "isDone": false},
-    {"id" : 2,"name": "Football", "isDone": false},
-    {"id" : 3,
+    {"id": 1, "name": "Cricket", "isDone": false},
+    {"id": 2, "name": "Football", "isDone": false},
+    {
+      "id": 3,
       "name": "Volleyball",
       "isDone": false,
     },
-    {"id" : 4,"name": "Music", "isDone": false},
+    {"id": 4, "name": "Music", "isDone": false},
   ];
 
   @override
   void initState() {
-       super.initState();
-
+    super.initState();
+    // avaliableHobby.clear();
+    // avaliableHobby.add(Hobby(id: 0, isDone: false, title: 'Cricket'));
+    // avaliableHobby.add(Hobby(id: 1, isDone: false, title: 'Football'));
+    // avaliableHobby.add(Hobby(id: 2, isDone: false, title: 'Dance'));
   }
 
   @override
@@ -51,18 +54,21 @@ class _HomePageState extends State<HomePage> {
             Wrap(
               children: availableHobbies.map((hobby) {
                 if (hobby["isDone"] == true) {
-                  return  Chip(
-                          onDeleted: () {
-                            setState(() {
-                              for (int i = 0 ; i < availableHobbies.length ; i++){
-                                if(availableHobbies[i]["name"] == hobby['name']){
-                                  availableHobbies[i]["isDone"] = false;
-                                  break;
-                                }
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Chip(
+                        onDeleted: () {
+                          setState(() {
+                            for (int i = 0; i < availableHobbies.length; i++) {
+                              if (availableHobbies[i]["name"] == hobby['name']) {
+                                availableHobbies[i]["isDone"] = false;
+                                break;
                               }
-                            });
-                          },
-                          label: Text(hobby["name"]));
+                            }
+                          });
+                        },
+                        label: Text(hobby["name"])),
+                  );
                 }
                 return Container();
               }).toList(),
