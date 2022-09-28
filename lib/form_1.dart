@@ -1,10 +1,7 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
-import 'package:text_form_ui/checkbox.dart';
 import 'package:text_form_ui/routes/routes.dart';
-
-import 'addhobby.dart';
 
 class Form1 extends StatefulWidget {
   const Form1({super.key, required name});
@@ -12,7 +9,6 @@ class Form1 extends StatefulWidget {
   @override
   State<Form1> createState() => _Form1State();
 }
-
 class _Form1State extends State<Form1> {
   String selectval = "";
   int _radioSelected = 0;
@@ -24,9 +20,17 @@ class _Form1State extends State<Form1> {
 
   final _formkey = GlobalKey<FormState>();
   final _dropkey = GlobalKey<FormState>();
+  final textFieldController = TextEditingController();
 
-  List avaliableHobby = [];
-  String? avaliableHobbyId;
+  List availableHobbies = [
+    {"id": 1, "name": "Cricket", "isDone": false},
+    {"id": 2, "name": "Football", "isDone": false},
+    {"id": 3,
+      "name": "Volleyball",
+      "isDone": false,
+    },
+    {"id": 4, "name": "Music", "isDone": false},
+  ];
 
   moveToHome(BuildContext context) async {
     if (_formkey.currentState!.validate()) {
@@ -147,13 +151,20 @@ class _Form1State extends State<Form1> {
       {"ID": 6, "Name": "Beijing", "ParentId": 6},
       {"ID": 7, "Name": "Vancouver", "ParentId": 6},
     ];
-
     // avaliableHobby.clear();
     // avaliableHobby.add(Hobby(id: 0, isDone: false, title: 'Cricket'));
     // avaliableHobby.add(Hobby(id: 1, isDone: false, title: 'Football'));
     // avaliableHobby.add(Hobby(id: 2, isDone: false, title: 'Dance'));
   }
 
+  void addhobby (String hobby) {
+    setState(() {
+      availableHobbies.add({"id": DateTime
+          .now()
+          .microsecondsSinceEpoch, "isDone": false, "name": hobby});
+    });
+      textFieldController.clear();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -196,7 +207,7 @@ class _Form1State extends State<Form1> {
                                 hintText: "First Name",
                                 border: OutlineInputBorder(
                                     borderRadius:
-                                        BorderRadius.circular(10.0))),
+                                    BorderRadius.circular(10.0))),
                           ),
                         ),
                         const SizedBox(
@@ -215,7 +226,7 @@ class _Form1State extends State<Form1> {
                                 hintText: "Last Name",
                                 border: OutlineInputBorder(
                                     borderRadius:
-                                        BorderRadius.circular(10.0))),
+                                    BorderRadius.circular(10.0))),
                           ),
                         ),
                       ],
@@ -292,10 +303,10 @@ class _Form1State extends State<Form1> {
                     children: const [
                       Expanded(
                           child: Divider(
-                        thickness: 2,
-                        indent: 30,
-                        endIndent: 10,
-                      )),
+                            thickness: 2,
+                            indent: 30,
+                            endIndent: 10,
+                          )),
                       Text(
                         "Region",
                         style: TextStyle(
@@ -303,10 +314,10 @@ class _Form1State extends State<Form1> {
                       ),
                       Expanded(
                           child: Divider(
-                        thickness: 2,
-                        indent: 10,
-                        endIndent: 30,
-                      ))
+                            thickness: 2,
+                            indent: 10,
+                            endIndent: 30,
+                          ))
                     ],
                   ),
                   const SizedBox(
@@ -321,26 +332,28 @@ class _Form1State extends State<Form1> {
                           "Selected Country",
                           countryId,
                           countries,
-                          (onChangedval) {
+                              (onChangedval) {
                             countryId = onChangedval;
                             print("selected country: $onChangedval");
                             states = statesMaster
                                 .where((stateItem) =>
-                                    stateItem["ParentId"].toString() ==
-                                    onChangedval.toString())
+                            stateItem["ParentId"].toString() ==
+                                onChangedval.toString())
                                 .toList();
                             stateId = null;
                             cityId = null;
                             setState(() {});
                           },
-                          (onValidateval) {
+                              (onValidateval) {
                             if (onValidateval == null) {
                               return "please select Country";
                             }
                             return null;
                           },
                           borderColor: Colors.grey,
-                          borderFocusColor: Theme.of(context).primaryColor,
+                          borderFocusColor: Theme
+                              .of(context)
+                              .primaryColor,
                           borderRadius: 10,
                         ),
                         const SizedBox(
@@ -351,25 +364,27 @@ class _Form1State extends State<Form1> {
                           "Selected state",
                           stateId,
                           states,
-                          (onChangedval) {
+                              (onChangedval) {
                             stateId = onChangedval;
                             print("Selected state: $onChangedval");
                             cities = cityMaster
                                 .where((cityItem) =>
-                                    cityItem["ParentId"].toString() ==
-                                    onChangedval.toString())
+                            cityItem["ParentId"].toString() ==
+                                onChangedval.toString())
                                 .toList();
                             cityId = null;
                             setState(() {});
                           },
-                          (onValidate) {
+                              (onValidate) {
                             if (onValidate == null) {
                               return "please select State";
                             }
                             return null;
                           },
                           borderColor: Colors.grey,
-                          borderFocusColor: Theme.of(context).primaryColor,
+                          borderFocusColor: Theme
+                              .of(context)
+                              .primaryColor,
                           borderRadius: 10,
                           optionValue: "ID",
                           optionLabel: "Name",
@@ -382,19 +397,21 @@ class _Form1State extends State<Form1> {
                           "Selected cities",
                           cityId,
                           cities,
-                          (onChangedval) {
+                              (onChangedval) {
                             cityId = onChangedval;
                             print("Selected cities: $onChangedval");
                             setState(() {});
                           },
-                          (onValidate) {
+                              (onValidate) {
                             if (onValidate == null) {
                               return "please select City";
                             }
                             return null;
                           },
                           borderColor: Colors.grey,
-                          borderFocusColor: Theme.of(context).primaryColor,
+                          borderFocusColor: Theme
+                              .of(context)
+                              .primaryColor,
                           borderRadius: 10,
                           optionValue: "ID",
                           optionLabel: "Name",
@@ -415,7 +432,7 @@ class _Form1State extends State<Form1> {
                     child: Text(
                       "Gender",
                       style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
@@ -499,7 +516,7 @@ class _Form1State extends State<Form1> {
                     child: Text(
                       "Language",
                       style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
@@ -626,16 +643,31 @@ class _Form1State extends State<Form1> {
                     child: Text(
                       "Hobbies :",
                       style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Align(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: FloatingActionButton(
-                        onPressed: () => showDialog(
-                            context: context,
-                            builder: (context) => const Addtohobby()),
+                        autofocus: true,
+                        onPressed: () {
+                          showDialog(context: context, builder: (context) =>
+                              AlertDialog(
+                                title: Text('Add Hobby'),
+                                content: TextField(
+                                  controller: textFieldController,
+                                  decoration: InputDecoration(
+                                      hintText: 'Enter your hobby name'),
+                                ),
+                                actions: [
+                                  TextButton(onPressed: () {
+                                    Navigator.of(context).pop();
+                                    addhobby(textFieldController.text);
+                                  }, child: Text('Submit'))
+                                ],
+                              ));
+                        },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -646,32 +678,45 @@ class _Form1State extends State<Form1> {
                   )
                 ],
               ),
-              Row(
-                children: const [
-                  SizedBox(
-                    width: 350,
-                    height: 400,
-                    child: HomePage(),
-                  )
-                ],
-              ),
-
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 10),
-              //   child: SizedBox(
-              //     height: 70,
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.start,
-              //       children: const [
-              //         Text(
-              //           "Selected Hobbies :",
-              //           style: TextStyle(
-              //               fontSize: 24, fontWeight: FontWeight.bold),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Column(
+                    children: availableHobbies.map((hobby) {
+                      return CheckboxListTile(
+                          activeColor: Colors.indigo,
+                          value: hobby["isDone"],
+                          title: Text(hobby["name"]),
+                          onChanged: (newValue) {
+                            setState(() {
+                              hobby["isDone"] = newValue;
+                            });
+                          });
+                    }).toList()),
+                const SizedBox(height: 10),
+                const Divider(),
+                const SizedBox(height: 10),
+                Wrap(
+                  children: availableHobbies.map((hobby) {
+                    if (hobby["isDone"] == true) {
+                      return  Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Chip(
+                            onDeleted: () {
+                              setState(() {
+                                for (int i = 0 ; i < availableHobbies.length ; i++){
+                                  if(availableHobbies[i]["name"] == hobby['name']){
+                                    availableHobbies[i]["isDone"] = false;
+                                    break;
+                                  }
+                                }
+                              });
+                            },
+                            label: Text(hobby["name"])),
+                      );
+                    }
+                    return Container();
+                  }).toList(),
+                )
+              ]),
               const SizedBox(
                 height: 10,
               ),
@@ -693,4 +738,7 @@ class _Form1State extends State<Form1> {
       ),
     );
   }
+
 }
+
+
