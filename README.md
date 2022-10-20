@@ -1,0 +1,5 @@
+![Simulator Screen Shot - iPhone SE (3rd generation) - 2022-10-20 at 15 34 27](https://user-images.githubusercontent.com/88843253/196920318-6ed51842-d908-4fd2-8937-af1411977e91.png)
+![Simulator Screen Shot - iPhone SE (3rd generation) - 2022-10-20 at 15 35 01](https://user-images.githubusercontent.com/88843253/196920354-a6836092-0cae-46ea-96f2-cde7135e3379.png)
+![Simulator Screen Shot - iPhone SE (3rd generation) - 2022-10-20 at 15 35 09](https://user-images.githubusercontent.com/88843253/196920373-59e9a659-9fd7-48c8-a3df-bf1c7ef0c220.png)
+![Simulator Screen Shot - iPhone SE (3rd generation) - 2022-10-20 at 15 36 00](https://user-images.githubusercontent.com/88843253/196920418-0145a815-a19d-475b-9c62-4de53144697f.png)
+![Simulator Screen Shot - iPhone SE (3rd generation) - 2022-10-20 at 15 36 04](https://user-images.githubusercontent.com/88843253/196920439-8a53210c-f88b-42d3-abfc-27bfe4fec225.png)
