@@ -1,16 +1,1 @@
-# text_form_ui
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Simulator Screen Shot - iPhone SE (3rd generation) - 2022-10-19 at 19 19 41](https://user-images.githubusercontent.com/88843253/196919344-02dc1ab1-2db7-449a-92e8-d0472463de59.png)
