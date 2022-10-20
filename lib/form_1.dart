@@ -1,9 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:text_form_ui/FormHelper.dart';
-import 'package:text_form_ui/details.dart';
 import 'package:text_form_ui/form_2.dart';
 import 'package:text_form_ui/model/user_data.dart';
 import 'package:text_form_ui/routes/routes.dart';
